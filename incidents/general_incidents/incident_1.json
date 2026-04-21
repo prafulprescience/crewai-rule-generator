@@ -1,0 +1,38 @@
+{
+  "type": "ValidatorIncident",
+  "title": "1 incident triggered on: demo_source (Blank Handling threshold)",
+  "source": {
+    "id": "SRC_123",
+    "name": "demo_source"
+  },
+  "validator": {
+    "id": "MTR_50",
+    "name": "null_handling_validator"
+  },
+  "segmentation": {
+    "id": "SGM_150",
+    "name": "Unsegmented"
+  },
+  "incidents": [
+    {
+      "incident_id": "TAT_500",
+      "incident_group_id": "IGP_500",
+      "message": "NULL values in exception_type replaced with 'NONE'",
+      "startTime": "2024-01-10 09:00:00 UTC",
+      "endTime": "2024-01-10 09:15:00 UTC",
+      "segment": {
+        "segmentFields": [
+          {
+            "field": "exception_type",
+            "value": ""
+          }
+        ],
+        "segmentId": "PRT_500"
+      },
+      "threshold": {
+        "thresholdType": "NullReplacement",
+        "severity": "LOW"
+      }
+    }
+  ]
+}

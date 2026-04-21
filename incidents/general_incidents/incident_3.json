@@ -1,0 +1,44 @@
+{
+  "type": "ValidatorIncident",
+  "title": "Mapping threshold triggered on demo_source",
+  "source": {
+    "id": "SRC_123",
+    "name": "demo_source"
+  },
+  "validator": {
+    "id": "MTR_52",
+    "name": "value_mapping_validator"
+  },
+  "segmentation": {
+    "id": "SGM_152",
+    "name": "Unsegmented"
+  },
+  "incidents": [
+    {
+      "incident_id": "TAT_502",
+      "incident_group_id": "IGP_502",
+      "startTime": "2024-01-10 11:00:00 UTC",
+      "endTime": "2024-01-10 11:05:00 UTC",
+      "segment": {
+        "segmentFields": [
+          {
+            "field": "zone_primary"
+          }
+        ],
+        "segmentId": "PRT_502"
+      },
+      "threshold": {
+        "thresholdType": "ValueMapping",
+        "severity": "LOW",
+        "valueMapping": {
+          "Receive": "Receiving",
+          "Recieving": "Receiving",
+          "Pick": "Picking",
+          "Pack": "Packing",
+          "Ship": "Shipping",
+          "Replenishment": "Replen"
+        }
+      }
+    }
+  ]
+}

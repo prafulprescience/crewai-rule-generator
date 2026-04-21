@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "version": 9,
+  "type": "DataTransformation",
+  "rules": [
+    {
+      "unique_id": "dt-0001",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the null values in a column using mean imputation.",
+      "input_args": "column: <string> Column name on which mean imputation has to be applied.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column null values by mean imputation",
+      "name": "transform_column_null_values_by_mean_imputation",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0002",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the null values in a column using median imputation.",
+      "input_args": "column: <string> Column name on which median imputation has to be applied.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column null values by median imputation",
+      "name": "transform_column_null_values_by_median_imputation",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0003",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the null values in a column using mode imputation.",
+      "input_args": "column: <string> Column name on which mode imputation has to be applied.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column null values by mode imputation",
+      "name": "transform_column_null_values_by_mode_imputation",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0004",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the null values using a user defined value.",
+      "input_args": "column: <string> The name of the column to modify.\ninput_value: <based on the column type> The value to replace null values with.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column null values using an input value",
+      "name": "transform_column_null_values_using_an_input_value",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "input_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0005",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the column by replacing values defined by the user.",
+      "input_args": "column: <string> Column to replace the values in.\nmapping: <dictionary> Mapping dictionary which has the values to be replaced and values to be replaced with as keys and values respectively.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values by replacing with mapping dictionary",
+      "name": "transform_column_values_by_replacing_with_mapping_dictionary",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "mapping": {
+          "#SET_VALUE": "#SET_VALUE"
+        }
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0006",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming table by deleting rows containing specific values in a given column.",
+      "input_args": "column: <string> Column based on which the rows have to be deleted.\nvalue_set: <list> Values in the column based on which rows have to be deleted.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by deleting specific rows based on column values",
+      "name": "transform_table_by_deleting_specific_column_values",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "value_set": [
+          "#SET_VALUE",
+          "#SET_VALUE"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0007",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming table by adding a new column with null values.",
+      "input_args": "column: <string> The name of the new column that has to be added.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by adding new column",
+      "name": "transform_table_by_adding_new_column",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0008",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the table by copying values from one column to another column.",
+      "input_args": "source_column: <string> Column from which the values have to be copied from.\ntarget_column: <string> Column to which the values have to be copied to.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values by copying from another column",
+      "name": "transform_column_values_by_copying_from_another_column",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "source_column": "#COLUMN_NAME",
+        "target_column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0009",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming table by deleting duplicate rows.",
+      "input_args": "column_list: <list> Column combination on which duplicate rows have to be checked and removed.\nkeep: <string> {'first', 'last', 'false'}, default 'first'. Determines which duplicates (if any) to keep.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by removing duplicates",
+      "name": "transform_table_by_removing_duplicates",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "column_list": [
+          "#COLUMN_NAME",
+          "#COLUMN_NAME"
+        ],
+        "keep": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0010",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming table by sorting based on given columns.",
+      "input_args": "columns: <list> List of columns and order based on which dataframe has to be sorted.\nascending: <bool> order in which column has to be sorted.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by sorting column values",
+      "name": "transform_table_by_sorting_column_values",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "columns": [
+          {
+            "column": "#COLUMN_NAME",
+            "ascending": "#SET_VALUE"
+          },
+          {
+            "column": "#COLUMN_NAME",
+            "ascending": "#SET_VALUE"
+          }
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0011",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming table by changing the order of the columns.",
+      "input_args": "column_list: <list> List of ordered columns we want the dataframe to have.\nappend_extra_columns_at_the_end: <bool> To append any extra or missed columns at the end.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by changing the order of columns",
+      "name": "transform_table_by_changing_the_order_of_columns",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "column_list": [
+          "#COLUMN_NAME",
+          "#COLUMN_NAME"
+        ],
+        "append_extra_columns_at_the_end": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0012",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the values in the column such that the mean of the column remains in between a particular range.",
+      "input_args": "column: <string> The name of the column to modify.\nmin_value: <float> The minimum allowed value for the mean.\nmax_value: <float> The maximum allowed value for the mean. \nprecision (int, optional): The precision value for the mean.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table to keep the mean between certain values",
+      "name": "transform_table_to_keep_the_mean_between_certain_values",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE",
+        "precision" : "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0013",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the datatype of the column to another.",
+      "input_args": "column: <string> The name of the column to modify.\nnew_dtype: <string> The new data type to assign to the column.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by changing column type",
+      "name": "transform_table_by_changing_column_type",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "new_dtype": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0014",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the column names by renaming them.",
+      "input_args": "old_column_name_set: <list> List of old column names.\nnew_column_name_set: <list> List of new column names.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by renaming column names",
+      "name": "transform_table_by_renaming_column_names",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "old_column_name_set": [
+          "#COLUMN_NAME",
+          "#COLUMN_NAME"
+        ],
+        "new_column_name_set": [
+          "#COLUMN_NAME",
+          "#COLUMN_NAME"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0015",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming table by splitting a column values into multiple columns.",
+      "input_args": "source_column: <string> The source column which has to be split.\ntarget_column_set: <list> The list of names of the columns which have to be created from the split columns. The number of split columns created and the number of column names given has to match.\nsplit_by: <string> String/character using which the source column has to be split. This value has to be present in a the rows of the column.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by splitting a column into multiple columns",
+      "name": "transform_table_by_splitting_a_column_into_multiple_columns",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "source_column": "#SET_VALUE",
+        "target_column_set": [
+          "#COLUMN_NAME",
+          "#COLUMN_NAME"
+        ],
+        "split_by": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0016",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the dataset based on user defined code.",
+      "input_args": "value: <textedit> The transformation code has to be entered. Use df for the dataframe and import the libraries necessary.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform using user defined code",
+      "name": "transform_using_user_defined_code",
+      "category": "Others",
+      "details_url": "",
+      "kwargs": {
+        "value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0017",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming table by merging values of multiple columns into one column.",
+      "input_args": "source_column_set: <list> List of columns that have to be merged.\ntarget_column: <string> Target column (existing or new) where the merged values have to be stored.\njoin_by: <string> String using which the given column values have to be merged.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform table by merging multiple columns to a column",
+      "name": "transform_table_by_merging_multiple_columns_to_a_column",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "source_column_set": [
+          "#COLUMN_NAME",
+          "#COLUMN_NAME"
+        ],
+        "target_column": "#SET_VALUE",
+        "join_by": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0018",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming column values by converting datetime from specific timezone to another timezone.",
+      "input_args": "source_column: <string> The source column in which the timezone has to be changed.\ntarget_column: <string> The target column in which the values with changed timezone has to be copied to. The target column could be the same as source column where values will just be replaced.\nsource_timezone: <string> (Optional) The timezone of the source column. If the timezone of the datetime is not already present, the timezone will be localised to the given source timezone. The timezone string has to be entered based on datetime library.\ntarget_timezone: <string> The timezone to which we want the datetime values to be converted to. The timezone string has to be entered based on datetime library.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values from a specific timezone to another timezone",
+      "name": "transform_column_values_from_a_specific_timezone_to_another_timezone",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "source_column": "#COLUMN_NAME",
+        "target_column": "#COLUMN_NAME",
+        "source_timezone": "#SET_VALUE",
+        "target_timezone": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0019",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the values of the column using regex such that the values meet a certain criteria.",
+      "input_args": "column: <string> The name of the column to modify.\nregex: <string> The regex that is needed to extract such strings. eg. (\\w+) \nadd_new_column: <boolean> To add the regex result as a new column(Default: True) new column created with a prefix of new_transformed of the column name",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values based on specific regex",
+      "name": "transform_column_values_based_on_specific_regex",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "regex": "#SET_VALUE",
+        "add_new_column": "#SET_VALUE"
+      }
+    },
+    {
+      "unique_id": "dt-0020",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the values of the column containing personal information by masking.",
+      "input_args": "column: <string> The name of the column to modify.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values of a column containing personal information by masking",
+      "name": "transform_column_values_containing_personal_information_by_masking",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      }
+    },
+    {
+      "unique_id": "dt-0021",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the values of the column containing personal information by encryption.",
+      "input_args": "column: <string> The name of the column to modify\nencryption_key: <string> The encryption key must be 32bit url-safe base64-encoded.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values of a column containing personal information by encryption",
+      "name": "transform_column_values_containing_personal_information_by_encrypting",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "encryption_key": "#SET_VALUE"
+      }
+    },
+    {
+      "unique_id": "dt-0022",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in applying ranking to the values in the specified column of the DataFrame.",
+      "input_args": "column: <string> The name of the column to rank.\nranking_column_name: <string> The name of the newly created rank column.\naxis: <integer> {0 for 'index', 1 for 'columns'}, default 0. The axis along which to rank.\nmethod: <string> {'average', 'min', 'max', 'first', 'dense'}, default 'average'. How to rank the group of records that have the same value.\nnumeric_only: <bool> default False. If True, rank only numeric columns for DataFrame objects.\nna_option: <string> {'keep', 'top', 'bottom'}, default 'keep'. How to rank NaN values.\nascending: <bool> default True. Whether to rank in ascending order.\npct: <bool> default False. Whether to display the returned rankings in percentile form.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Rank column values",
+      "name": "transform_column_by_ranking_the_values",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "ranking_column_name": "#COLUMN_NAME",
+        "axis": "#SET_VALUE",
+        "method": "#SET_VALUE",
+        "numeric_only": "#SET_VALUE",
+        "na_option": "#SET_VALUE",
+        "ascending": "#SET_VALUE",
+        "pct": "#SET_VALUE"
+      }
+    },
+    {
+      "unique_id": "dt-0023",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the values in the column such that the logarithm is applied to values in the column.",
+      "input_args": "column: <string> The name of the column to modify.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values by fixing_outliers using logarithm",
+      "name": "transform_column_values_by_fixing_outliers_using_logarithm",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0024",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the values in the column such that the sqrt is applied to values in the column.",
+      "input_args": "column: <string> The name of the column to modify.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values by changing outliers using sqrt",
+      "name": "transform_column_values_by_changing_outliers_using_sqrt",
+      "category": "Table_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0025",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule helps in transforming the column values to distribute between three different column as date, month and year colun.",
+      "input_args": "column: <string> The name of the column.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column values value by splitting date",
+      "name": "transform_column_values_by_splitting_date",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dt-0026",
+      "provider": "Prescience",
+      "platforms": "Pandas",
+      "type": "DataTransformation",
+      "description": "This rule standardizes mixed-format date values (e.g., mm-dd-yyyy, mm/dd/yyyy) in a column to a uniform format like yyyy-mm-dd.",
+      "input_args": "column: <string> The name of the column to modify.\noutput_format: <string> Optional. The desired date format. Default is '%Y-%m-%d'.",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "display_name": "Transform column value by changing date format",
+      "name": "transform_column_value_by_changing_date_format",
+      "category": "Column_Level",
+      "details_url": "",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "output_format": "#SET_VALUE"
+      },
+      "meta": {}
+    }
+  ]
+}

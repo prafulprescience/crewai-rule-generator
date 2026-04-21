@@ -1,0 +1,41 @@
+{
+  "type": "ValidatorIncident",
+  "title": "1 incident triggered on: demo_source (Categorical threshold)",
+  "validatorUrl": "https://your-validio-instance.com/observe/sources/SRC_123/validators/VAL_45",
+  "source": {
+    "id": "SRC_123",
+    "name": "demo_source"
+  },
+  "validator": {
+    "id": "MTR_45",
+    "name": "categorical_validator"
+  },
+  "segmentation": {
+    "id": "SGM_145",
+    "name": "Unsegmented"
+  },
+  "incidents": [
+    {
+      "incident_id": "TAT_405",
+      "incident_group_id": "IGP_405",
+      "message": "Invalid valve state detected",
+      "startTime": "2024-01-09 10:00:00 UTC",
+      "endTime": "2024-01-09 10:05:00 UTC",
+      "segment": {
+        "segmentFields": [
+          {
+            "field": "valve_state",
+            "value": "half-open"
+          }
+        ],
+        "segmentId": "PRT_405"
+      },
+      "threshold": {
+        "thresholdType": "Categorical",
+        "severity": "HIGH"
+      },
+      "url": "http://your-validio-instance.com/issues/incidents/IGP_405",
+      "imageUrl": "https://your-validio-instance.com/incident-graph/TAT_405"
+    }
+  ]
+}

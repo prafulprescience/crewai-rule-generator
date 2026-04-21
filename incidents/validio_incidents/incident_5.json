@@ -1,0 +1,41 @@
+{
+  "type": "ValidatorIncident",
+  "title": "1 incident triggered on: demo_source (PII detected in latitude)",
+  "validatorUrl": "https://your-validio-instance.com/observe/sources/SRC_123/validators/VAL_PII_001",
+  "source": {
+    "id": "SRC_123",
+    "name": "demo_source"
+  },
+  "validator": {
+    "id": "MTR_PII_LAT_001",
+    "name": "pii_latitude_validator"
+  },
+  "segmentation": {
+    "id": "SGM_PII_001",
+    "name": "Unsegmented"
+  },
+  "incidents": [
+    {
+      "incident_id": "TAT_LAT_001",
+      "incident_group_id": "IGP_LAT_001",
+      "message": "PII value detected in latitude field - should be masked",
+      "startTime": "2024-01-12 02:10:00 UTC",
+      "endTime": "2024-01-12 02:15:00 UTC",
+      "segment": {
+        "segmentFields": [
+          {
+            "field": "latitude",
+            "value": "12.9716"
+          }
+        ],
+        "segmentId": "PRT_LAT_001"
+      },
+      "threshold": {
+        "thresholdType": "PII",
+        "severity": "HIGH"
+      },
+      "url": "http://your-validio-instance.com/issues/incidents/IGP_LAT_001",
+      "imageUrl": "https://your-validio-instance.com/incident-graph/TAT_LAT_001"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "type": "ValidatorIncident",
+  "title": "1 incident triggered on: demo_source (Date Format threshold)",
+  "source": {
+    "id": "SRC_123",
+    "name": "demo_source"
+  },
+  "validator": {
+    "id": "MTR_53",
+    "name": "date_format_validator"
+  },
+  "segmentation": {
+    "id": "SGM_153",
+    "name": "Unsegmented"
+  },
+  "incidents": [
+    {
+      "incident_id": "TAT_503",
+      "incident_group_id": "IGP_503",
+      "message": "Date format standardized to '%Y-%m-%d' for multiple columns",
+      "startTime": "2024-01-10 12:00:00 UTC",
+      "endTime": "2024-01-10 12:10:00 UTC",
+      "segment": {
+        "segmentFields": [
+          {
+            "field": "work_date",
+            "value": "2/1/2026"
+          }
+        ],
+        "segmentId": "PRT_503"
+      },
+      "threshold": {
+        "thresholdType": "DateFormat",
+        "severity": "MEDIUM"
+      }
+    }
+  ]
+}
