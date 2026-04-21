@@ -1,0 +1,1 @@
+# crewai-rule-generator
