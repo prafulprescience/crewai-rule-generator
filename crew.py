@@ -6,21 +6,16 @@ __copyright__ = "Copyright 2026, Prescience Decision Solutions"
 import json
 from crewai import Crew, Process
 from dotenv import load_dotenv
-from helpers.config_reader import  load_incidents_bundle, load_yaml
+from helpers.config_reader import load_yaml
 from helpers.helpers import (
-    _fill_ini_prompt_placeholders,
+    fill_ini_prompt_placeholders,
     extract_agent_output,
     save_agent_output,
     fetch_master_rules,
     fetch_prompt,
 )
 from constants import (
-    DT_RULE_GENERATION_PROMPT,
-    PAYLOAD_MAPPING_PROMPT,
-    TASKS_CONFIG_PATH,
-    load_json,
-    safe_parse_json,
-    save_json,
+    TASKS_CONFIG_PATH
 )
 from agents.rule_agents import (
     create_data_quality_analyst_agent,
@@ -44,12 +39,12 @@ def create_rule_generation_crew(job_type, data_profile, additional_info):
 
     master_rules = fetch_master_rules(job_type)
     rule_generation_prompt = fetch_prompt(job_type)
-        
-    rule_prompt_template = _fill_ini_prompt_placeholders(
+
+    rule_prompt_template = fill_ini_prompt_placeholders(
         rule_generation_prompt,
-        data_profile = json.dumps(data_profile, indent=2),
-        additional_info = additional_info,
-        master_rules=json.dumps(master_rules, indent=2)
+        data_profile=json.dumps(data_profile, indent=2),
+        additional_info=additional_info,
+        master_rules=json.dumps(master_rules, indent=2),
     )
 
     # Task : Analyze the Dataset
@@ -103,7 +98,7 @@ def run_agents(job_type, data_profile, additional_info):
         save_agent_output(result)
         res = extract_agent_output(result)
 
-        return res[0], res[1]['parsed'], res[2]['parsed']
+        return res[0], res[1]["parsed"], res[2]["parsed"]
 
     except Exception as ex:
         raise Exception(f"Rule generation failed : {ex}")

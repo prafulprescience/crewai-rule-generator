@@ -7,13 +7,13 @@ import json
 import re
 from pathlib import Path
 
-AZURE_OPENAI_API_KEY = 'AZURE_OPENAI_API_KEY'
-AZURE_OPENAI_ENDPOINT = 'AZURE_OPENAI_ENDPOINT'
-AZURE_OPENAI_MODEL = 'AZURE_OPENAI_MODEL'
-AZURE_OPENAI_API_VERSION = 'AZURE_OPENAI_API_VERSION'
+AZURE_OPENAI_API_KEY = "AZURE_OPENAI_API_KEY"
+AZURE_OPENAI_ENDPOINT = "AZURE_OPENAI_ENDPOINT"
+AZURE_OPENAI_MODEL = "AZURE_OPENAI_MODEL"
+AZURE_OPENAI_API_VERSION = "AZURE_OPENAI_API_VERSION"
 
-AZURE_OPEN_AI_DEFAULT_MODEL_NAME = 'gpt-4o'
-AZURE_OPEN_AI_DEFAULT_VERSION = '2025-01-01-preview'
+AZURE_OPEN_AI_DEFAULT_MODEL_NAME = "gpt-4o"
+AZURE_OPEN_AI_DEFAULT_VERSION = "2025-01-01-preview"
 
 OUTPUT_PAYLOAD_PATH = "./output_files/output_payload.json"
 OUTPUT_RULES_PATH = "./output_files/output_rules.json"
@@ -23,15 +23,12 @@ MASTER_DQ_RULES_PATH = "./master_rules/master_dq_rules.json"
 TASKS_CONFIG_PATH = "./config/tasks.yaml"
 AGENTS_CONFIG_PATH = "./config/agents.yaml"
 
-PAYLOAD_MAPPING_PROMPT = 'payload_mapping_prompt'
-DT_RULE_GENERATION_PROMPT = 'dt_rule_generation_prompt'
-DQ_RULE_GENERATION_PROMPT = 'dq_rule_generation_prompt'
-VALIDIO_DT_RULE_GENERATION_PROMPT = 'validio_rule_generation_prompt'
+DT_RULE_GENERATION_PROMPT = "dt_rule_generation_prompt"
+DQ_RULE_GENERATION_PROMPT = "dq_rule_generation_prompt"
 
-VALIDIO = 'validio'
-AI_THRESHOLD_CONFIDENCE = 0.99
-DATA_QUALITY = 'DataQuality'
-DATA_TRANSFORMATION = 'DataTransformation'
+DATA_QUALITY = "DataQuality"
+DATA_TRANSFORMATION = "DataTransformation"
+
 
 def save_json(path: str, data):
     Path(path).parent.mkdir(parents=True, exist_ok=True)

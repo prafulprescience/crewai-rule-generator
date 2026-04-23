@@ -51,6 +51,7 @@ def create_data_quality_analyst_agent() -> Agent:
         llm=get_azure_llm(),
     )
 
+
 def data_profile_analyst_agent() -> Agent:
     config = load_agents_config()["data_profile_analyst"]
     
@@ -62,6 +63,7 @@ def data_profile_analyst_agent() -> Agent:
         allow_delegation=False,
         llm=get_azure_llm(),
     )
+
 
 def create_rule_generator_agent() -> Agent:
     config = load_agents_config()["rule_generator"]

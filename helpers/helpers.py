@@ -1,22 +1,24 @@
+"""helpers.py: Helpers for agentic rule generation"""
+
+__author__ = "Prajeesh"
+__copyright__ = "Copyright 2026, Prescience Decision Solutions"
+
 from constants import (
     DQ_RULE_GENERATION_PROMPT,
     DT_RULE_GENERATION_PROMPT,
     MASTER_DQ_RULES_PATH,
     MASTER_DT_RULES_PATH,
-    PAYLOAD_MAPPING_PROMPT,
     OUTPUT_AGENT_PATH,
     DATA_QUALITY,
-    DATA_TRANSFORMATION,
     load_json,
     safe_parse_json,
     save_json,
 )
 from typing import Optional
-
 from helpers.config_reader import get_prompt
 
 
-def _fill_ini_prompt_placeholders(
+def fill_ini_prompt_placeholders(
     template: str,
     *,
     incident_json: Optional[str] = None,
