@@ -25,10 +25,12 @@ from constants import (
 from agents.rule_agents import (
     create_data_quality_analyst_agent,
     create_rule_generator_agent,
+    create_payload_mapper_agent,
 )
 from tasks.rule_generation_tasks import (
     create_analyze_dataset_task,
     create_generate_rules_task,
+    create_map_to_payload_task,
 )
 
 load_dotenv()
@@ -38,6 +40,7 @@ def create_rule_generation_crew(job_type, data_profile, additional_info):
     tasks_cfg = load_yaml(TASKS_CONFIG_PATH)
     data_quality_analyst = create_data_quality_analyst_agent()
     rule_generator = create_rule_generator_agent()
+    payload_mapper = create_payload_mapper_agent()
 
     master_rules = fetch_master_rules(job_type)
     rule_generation_prompt = fetch_prompt(job_type)
@@ -70,11 +73,21 @@ def create_rule_generation_crew(job_type, data_profile, additional_info):
         context_tasks=[analyze_dataset_task],
     )
 
+    # Task : Map to Payload (complete master rule format)
+    map_cfg = tasks_cfg["map_to_payload"]
+    map_to_payload_task = create_map_to_payload_task(
+        agent=payload_mapper,
+        task_config=map_cfg,
+        master_rules=json.dumps(master_rules, indent=2),
+        context_tasks=[generate_rules_task],
+    )
+
     crew = Crew(
-        agents=[data_quality_analyst, rule_generator],
+        agents=[data_quality_analyst, rule_generator, payload_mapper],
         tasks=[
             analyze_dataset_task,
             generate_rules_task,
+            map_to_payload_task,
         ],
         process=Process.sequential,
         verbose=False,
@@ -90,7 +103,7 @@ def run_agents(job_type, data_profile, additional_info):
         save_agent_output(result)
         res = extract_agent_output(result)
 
-        return res[0], res[1]['parsed']
+        return res[0], res[1]['parsed'], res[2]['parsed']
 
     except Exception as ex:
         raise Exception(f"Rule generation failed : {ex}")

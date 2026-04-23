@@ -48,67 +48,51 @@ generate_rules:
 
 map_to_payload:
   description: |
-    Transform each generated rule into the final DQ Suite payload format.
+    Transform each generated rule into the complete master rule format.
 
-    BASELINE: Current DQ suite payload from the API:
-    <<EXISTING_PAYLOAD>>
-
-    MASTER RULES SCHEMA (reference for required fields):
+    MASTER RULES SCHEMA (reference template with all required fields):
     <<MASTER_RULES>>
 
-    INSTRUCTIONS:
-    For each generated rule:
+    GENERATED RULES (from previous task):
+    Use the rules from the generate_rules task output.
+
+    INSTRUCTIONS FOR EACH GENERATED RULE:
     1. Find the matching rule template in master rules by rule name
-    2. Copy ALL schema fields from the master rule template
-    3. Replace ONLY the 'kwargs' field with actual parameters from generated rule
-    4. Validate each transformed rule against master rule schema (all 15 required keys present)
+    2. Copy ALL 15 schema fields from the master rule template
+    3. Replace ONLY the 'kwargs' field with actual parameters from the generated rule
+    4. Preserve all other fields (category, description, display_name, input_args, etc.)
+    5. Generate a unique_id following pattern: dt-XXXX (where XXXX is sequential)
+    6. Validate the transformed rule has all required keys present
 
-    PAYLOAD ASSEMBLY:
-    1. Preserve ALL metadata fields from EXISTING_PAYLOAD exactly as they are
-    2. Replace ONLY the 'rules' array with the transformed rules (do NOT merge - replace completely)
-    3. Ensure final output is valid JSON matching API schema
+    REQUIRED FIELDS (all 15 must be present):
+    - unique_id, provider, platforms, type, description, input_args
+    - tags, dimension, no_of_instances, display_name, name, category
+    - details_url, kwargs (with actual values), meta
 
-    Output format: Complete payload object ready for API submission (same structure as EXISTING_PAYLOAD but with updated rules).
+    Output format: A complete list of rule dictionaries, each containing all 15 keys
+    and ready for API submission.
 
   expected_output: |
-    The complete DQ Suite payload object containing all reserved fields:
-    - id: <preserved>
-    - created_at: <preserved> 
-    - created_by: <preserved> 
-    - deleted_at: <preserved> 
-    - description: <preserved>
-    - is_active: <preserved>
-    - modified_by: <preserved>
-    - name: <preserved>
-    - tenant_id: <preserved>
-    - type: <preserved> 
-    - updated_at: <preserved> 
-    - 'rules' array with transformed rules (each rule with all 15 required keys from master schema)
-    - Valid JSON structure matching API response format
-    
-    Example structure:
-    {
-      "id": 30,
-      "created_at": "2026-02-27T04:40:04.112300+00:00",
-      "created_by": "6cfe137e-ad5a-4f1e-9826-c23e9b400bc1",
-      "deleted_at": null,
-      "description": "",
-      "is_active": true,
-      "modified_by": "6cfe137e-ad5a-4f1e-9826-c23e9b400bc1",
-      "name": "DHL Fact Operations Transformation",
-      "tenant_id": "e64c907f-2635-43ab-a91b-c39a4d26ec80",
-      "type": "DataTransformation",
-      "updated_at": "2026-02-27T05:59:06.256972+00:00",
-      "rules": [
-        {
-          "unique_id": "dt-XXXX",
-          "provider": "Prescience",
-          "platforms": "Pandas",
-          ...all 15 fields...
-          "kwargs": {populated with actual values}
-        }
-      ]
-    }
+    A JSON array of complete rule objects (each with all 15 keys):
+    [
+      {
+        "unique_id": "dt-XXXX",
+        "provider": "Prescience",
+        "platforms": "Pandas",
+        "type": "DataTransformation",
+        "description": "...",
+        "input_args": "...",
+        "tags": "",
+        "dimension": "",
+        "no_of_instances": -1,
+        "display_name": "...",
+        "name": "rule_name",
+        "category": "Column_Level",
+        "details_url": "",
+        "kwargs": {actual values from generated rule},
+        "meta": {}
+      }
+    ]
 
 review_output:
   description: |

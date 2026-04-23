@@ -83,26 +83,23 @@ def create_generate_rules_task(
 def create_map_to_payload_task(
     agent,
     task_config: dict,
-    payload_prompt: str,
-    existing_payload: str,
+    master_rules: str,
     context_tasks: Optional[list] = None
 ) -> Task:
     """
-    Create the map to payload task with runtime-updated description.
+    Create the map to payload task to transform generated rules into complete master rule format.
     
     Args:
-        agent: The payload mapper agent
+        agent: The rule mapper agent
         task_config: Task configuration from tasks.yaml
-        payload_prompt: The filled payload mapping prompt
-        existing_payload: JSON string of existing payload
-        context_tasks: List of context tasks
+        master_rules: JSON string of master rules catalog (for reference)
+        context_tasks: List of context tasks (typically generate_rules_task)
     
     Returns:
         Task: Configured map to payload task
     """
     placeholders = {
-        "payload_mapping_prompt": payload_prompt,
-        "EXISTING_PAYLOAD": existing_payload,
+        "MASTER_RULES": master_rules,
     }
     
     description = _apply_task_placeholders(

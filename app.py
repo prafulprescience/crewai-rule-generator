@@ -4,6 +4,7 @@ __author__ = "Praful"
 __copyright__ = "Copyright 2026, Prescience Decision Solutions"
 
 import os
+import logging
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from constants import (
@@ -32,6 +33,9 @@ from ds_api_wrapper import (
 
 load_dotenv()
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 app = Flask(__name__)
 
 
@@ -39,7 +43,8 @@ app = Flask(__name__)
 @app.route('/generate-rules', methods=['POST'])
 def generate_rules():
     try:
-        print("Entering generate rule.")
+        logger.info("[/generate-rules] Request started")
+        
         data = request.json
         if not data:
             raise Exception("No input data received.")
@@ -50,17 +55,23 @@ def generate_rules():
 
         if job_type not in [DATA_TRANSFORMATION, DATA_QUALITY]:
             raise Exception("Invalid job type. Please specify either 'DataTransformation' or 'DataQuality'.")
-        _,generated_rules = run_agents(job_type, data_profile, additional_info)
+        
+        logger.info(f"[/generate-rules] Running agents with job_type: {job_type}")
+        _, generated_rules, mapped_rules = run_agents(job_type, data_profile, additional_info)
 
+        logger.info(f"[/generate-rules] Generated {len(mapped_rules)} rules")
         save_json(OUTPUT_RULES_PATH, generated_rules)
+        save_json(OUTPUT_PAYLOAD_PATH, mapped_rules)
 
+        logger.info("[/generate-rules] Completed successfully")
         return jsonify({
             "status": "Success",
-            "message": "Rules generated successfully",
-            "data": generated_rules
+            "message": "Rules generated and mapped successfully",
+            "data": mapped_rules
         }), 200
 
     except Exception as ex:
+        logger.error(f"[/generate-rules] Error: {str(ex)}")
         return jsonify({
             "status": "Error",
             "message": f"Error : {str(ex)}"
