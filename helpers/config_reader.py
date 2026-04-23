@@ -13,8 +13,9 @@ import yaml
 from constants import VALIDIO, load_json
 
 current_dir = Path(__file__).parent
+project_root = current_dir.parent
 
-PROMPT_FILE_PATH = os.path.join(current_dir, "config", "prompts.ini")
+PROMPT_FILE_PATH = os.path.join(project_root, "config", "prompts.ini")
 
 _CONFIG = ConfigParser(interpolation=None)
 _CONFIG.read(PROMPT_FILE_PATH, encoding="utf-8")

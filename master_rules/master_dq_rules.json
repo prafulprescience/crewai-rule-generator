@@ -1,0 +1,950 @@
+{
+  "schema_version": 1,
+  "version": 13,
+  "type": "DataQuality",
+  "rules": [
+    {
+      "unique_id": "dq-0001",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the number of columns to be between two values.",
+      "input_args": "min_value: <integer or None> The minimum number of columns, inclusive.\nmax_value: <integer or None> The maximum number of columns, inclusive.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_table_column_count_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Table_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_table_column_count_to_be_between",
+      "display_name": "Expect table column count to be between",
+      "kwargs": {
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0002",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the number of rows to be between two values.",
+      "input_args": "min_value: <integer or None> The minimum number of rows, inclusive.\nmax_value: <integer or None> The maximum number of rows, inclusive.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_table_row_count_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Table_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_table_row_count_to_be_between",
+      "display_name": "Expect table row count to be between",
+      "kwargs": {
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0003",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column values to not be null.",
+      "input_args": "column: <string> The list of column names.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_not_be_null?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_not_be_null",
+      "display_name": "Expect list of column values to not be null",
+      "kwargs": {
+        "column": ["#COLUMN_NAME", "#COLUMN_NAME"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0004",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect a column to contain values of a specified data type.",
+      "input_args": "column: <string> The column name.\ntype_: <string> A string representing the data type that column should have as entries.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_of_type?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_of_type",
+      "display_name": "Expect column values to be of type",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "type_": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0005",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the set of distinct column values to be contained by a given set.",
+      "input_args": "column: <string>  The column name.\nvalue_set: <set-like> A set of objects used for comparison.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_distinct_values_to_be_in_set?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Integrity",
+      "no_of_instances": -1,
+      "name": "expect_column_distinct_values_to_be_in_set",
+      "display_name": "Expect column distinct values to be in set",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "value_set": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0006",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the columns to exactly match a specified list.",
+      "input_args": "column_list: <list of strings> The column names, in the correct order.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_table_columns_to_match_ordered_list?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Table_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_table_columns_to_match_ordered_list",
+      "display_name": "Expect table columns to match ordered list",
+      "kwargs": {
+        "column_list": ["#COLUMN_NAME", "#COLUMN_NAME"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0007",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the columns to exist.",
+      "input_args": "column: <string> The list of column names.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_to_exist?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_to_exist",
+      "display_name": "Expect column to exist",
+      "kwargs": {
+        "column": ["#COLUMN_NAME", "#COLUMN_NAME"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0008",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect each column value to be unique.",
+      "input_args": "column: <string> The list of column names.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_unique?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Uniqueness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_unique",
+      "display_name": "Expect list of column values to be unique independently",
+      "kwargs": {
+        "column": ["#COLUMN_NAME", "#COLUMN_NAME"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0009",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column values to be increasing.",
+      "input_args": "column: <string> The column name.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_increasing?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Timeliness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_increasing",
+      "display_name": "Expect column values to be increasing",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0010",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column values to be decreasing.",
+      "input_args": "column: <string> The column name.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_decreasing?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Timeliness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_decreasing",
+      "display_name": "Expect column values to be decreasing",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0011",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect a column to contain values from a specified type list.",
+      "input_args": "column: <string> The column name.\ntype_list: <list of strings or None> A list of strings representing the data type that each column should have as entries.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_in_type_list?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_in_type_list",
+      "display_name": "Expect column values to be in type list",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "type_list": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0012",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column entries to be strings that match a given regular expression.",
+      "input_args": "column: <string> The column name.\nregex: <string> The regular expression the column entries should match.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_match_regex?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_match_regex",
+      "display_name": "Expect column values to match regex",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "regex": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0013",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column entries to be strings that do not match a given regular expression.",
+      "input_args": "column: <string> The column name.\nregex: <string> The regular expression the column entries should not match.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_not_match_regex?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_not_match_regex",
+      "display_name": "Expect column values to not match regex",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "regex": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0014",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column entries to be strings that can be matched to either any of or all of a list of regular expressions.",
+      "input_args": "column: <string> The column name.\nregex_list: <list> The list of regular expressions which the column entries should match.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_match_regex_list?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_match_regex_list",
+      "display_name": "Expect column values to match regex list",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "regex_list": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0015",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the set of distinct column values to contain a given set.",
+      "input_args": "column: <string> The column name.\nvalue_set: <set-like> A set of objects used for comparison.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_distinct_values_to_contain_set?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Integrity",
+      "no_of_instances": -1,
+      "name": "expect_column_distinct_values_to_contain_set",
+      "display_name": "Expect column distinct values to contain set",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "value_set": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0016",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the set of distinct column values to equal a given set.",
+      "input_args": "column: <string> The column name.\nvalue_set: <set-like> A set of objects used for comparison.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_distinct_values_to_equal_set?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Integrity",
+      "no_of_instances": -1,
+      "name": "expect_column_distinct_values_to_equal_set",
+      "display_name": "Expect column distinct values to equal set",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "value_set": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0017",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column maximum to be between a minimum value and a maximum value.",
+      "input_args": "column: <string> The column name\nmin_value: <comparable type or None> The minimum value of the acceptable range for the column maximum.\nmax_value: <comparable type or None> The maximum value of the acceptable range for the column maximum.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_max_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_max_to_be_between",
+      "display_name": "Expect column max to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0018",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column minimum to be between a minimum value and a maximum value.",
+      "input_args": "column: <string> The column name\nmin_value: <comparable type or None> The minimum value of the acceptable range for the column minimum.\nmax_value: <comparable type or None> The maximum value of the acceptable range for the column minimum.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_min_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_min_to_be_between",
+      "display_name": "Expect column min to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0019",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column to sum to be between a minimum value and a maximum value.",
+      "input_args": "column: <string> The column name.\nmin_value: <comparable type or None> The minimal sum allowed.\nmax_value: <comparable type or None> The maximal sum allowed.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_sum_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_sum_to_be_between",
+      "display_name": "Expect column sum to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0020",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the number of unique values to be between a minimum value and a maximum value.",
+      "input_args": "column: <string> The column name.\nmin_value: <integer or None> The minimum number of unique values allowed.\nmax_value: <integer or None> The maximum number of unique values allowed.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_unique_value_count_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_unique_value_count_to_be_between",
+      "display_name": "Expect column unique value count to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0021",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the most common value to be within the designated value set.",
+      "input_args": "column: <string> The column name.\nvalue_set: <set-like> A list of potential values to match.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_most_common_value_to_be_in_set?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_most_common_value_to_be_in_set",
+      "display_name": "Expect column most common value to be in set",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "value_set": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0022",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the proportion of unique values to be between a minimum value and a maximum value.",
+      "input_args": "column: <string> The column name.\nmin_value: <float or None> The minimum proportion of unique values (Proportions are on the range 0 to 1).\nmax_value: <float or None> The maximum proportion of unique values (Proportions are on the range 0 to 1).",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_proportion_of_unique_values_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_proportion_of_unique_values_to_be_between",
+      "display_name": "Expect column proportion of unique values to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0023",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the values in column A to be greater than column B.",
+      "input_args": "column_A: <string> The first column name.\ncolumn_B: <string> The second column name.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_pair_values_a_to_be_greater_than_b?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_pair_values_a_to_be_greater_than_b",
+      "display_name": "Expect column pair values a to be greater than b",
+      "kwargs": {
+        "column_A": "#SET_VALUE",
+        "column_B": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0024",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the values in column A to be the same as column B.",
+      "input_args": "column_A: <string> The first column name.\ncolumn_B: <string> The second column name.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_pair_values_to_be_equal?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_pair_values_to_be_equal",
+      "display_name": "Expect column pair values to be equal",
+      "kwargs": {
+        "column_A": "#SET_VALUE",
+        "column_B": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0025",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the paired values from columns A and B to belong to a set of valid pairs.",
+      "input_args": "column_A: <string> The first column name.\ncolumn_B: <string> The second column name.\nvalue_pairs_set: <list of tuples> All the valid pairs to be matched.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_pair_values_to_be_in_set?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_column_pair_values_to_be_in_set",
+      "display_name": "Expect column pair values to be in set",
+      "kwargs": {
+        "column_A": "#SET_VALUE",
+        "column_B": "#SET_VALUE",
+        "value_pairs_set": ["#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0026",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the values for each record to be unique across the columns listed.",
+      "input_args": "column_list: <tuple or list> The column names to evaluate.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_select_column_values_to_be_unique_within_record?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Uniqueness",
+      "no_of_instances": -1,
+      "name": "expect_select_column_values_to_be_unique_within_record",
+      "display_name": "Expect select column values to be unique within record",
+      "kwargs": {
+        "column_list": ["#COLUMN_NAME", "#COLUMN_NAME"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0027",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the compound columns to be unique.",
+      "input_args": "column_list: <tuple or set> Set of columns to be checked.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_compound_columns_to_be_unique?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Uniqueness",
+      "no_of_instances": -1,
+      "name": "expect_compound_columns_to_be_unique",
+      "display_name": "Expect compound columns to be unique",
+      "kwargs": {
+        "column_list": ["#COLUMN_NAME", "#COLUMN_NAME"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0028",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the number of rows to equal a value.",
+      "input_args": "value: <integer> The expected number of rows.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_table_row_count_to_equal?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Table_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_table_row_count_to_equal",
+      "display_name": "Expect table row count to equal",
+      "kwargs": {
+        "value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0029",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the columns to match an unordered set.",
+      "input_args": "column_set: <list of strings> The column names, in any order.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_table_columns_to_match_set?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Table_Level",
+      "tags": "",
+      "dimension": "Integrity",
+      "no_of_instances": -1,
+      "name": "expect_table_columns_to_match_set",
+      "display_name": "Expect table columns to match set",
+      "kwargs": {
+        "column_set": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0030",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column values to be null.",
+      "input_args": "column: <string> The list of column names.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_null?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_null",
+      "display_name": "Expect list of column values to be null",
+      "kwargs": {
+        "column": ["#COLUMN_NAME", "#COLUMN_NAME"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0031",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column entries to be between a minimum value and a maximum value (inclusive).",
+      "input_args": "column: <string> The column name.\nmin_value: <comparable type or None> The minimum value for a column entry.\nmax_value: <comparable type or None> The maximum value for a column entry.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_between",
+      "display_name": "Expect column values to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0032",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect column entries to not be in the set.",
+      "input_args": "column: <string>  The column name.\nvalue_set: <set-like> A set of objects used for comparison.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_not_be_in_set?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_not_be_in_set",
+      "display_name": "Expect column values to not be in set",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "value_set": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0033",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column entries to be strings with length between a minimum value and a maximum value (inclusive).",
+      "input_args": "column: <string> The column name.\nmin_value: <int or None> The minimum value for a column entry.\nmax_value: <int or None> The maximum value for a column entry.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_value_lengths_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_value_lengths_to_be_between",
+      "display_name": "Expect column value lengths to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0034",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column entries to be strings with length equal to the provided value.",
+      "input_args": "column: <string> The column name.\nvalue: <integer> The expected value for a column entry length.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_value_lengths_to_equal?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Completeness",
+      "no_of_instances": -1,
+      "name": "expect_column_value_lengths_to_equal",
+      "display_name": "Expect column value lengths to equal",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0035",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column mean to be between a minimum value and a maximum value (inclusive).",
+      "input_args": "column: <string> The column name.\nmin_value: <float or None> The minimum value for the column mean.\nmax_value: <float or None> The maximum value for the column mean.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_mean_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_mean_to_be_between",
+      "display_name": "Expect column mean to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0036",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column median to be between a minimum value and a maximum value.",
+      "input_args": "column: <string> The column name.\nmin_value: <int or None> The minimum value for the column median.\nmax_value: <int or None> The maximum value for the column median.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_median_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_median_to_be_between",
+      "display_name": "Expect column median to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0037",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column standard deviation to be between a minimum value and a maximum value.",
+      "input_args": "column: <string> The column name.\nmin_value: <float or None> The minimum value for the column standard deviation.\nmax_value: <float or None> The maximum value for the column standard deviation.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_stdev_to_be_between?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_stdev_to_be_between",
+      "display_name": "Expect column standard deviation to be between",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "min_value": "#SET_VALUE",
+        "max_value": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0038",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column values to not match the regex list.",
+      "input_args": "column: <string> The column name.\nregex_list: <list> The list of regular expressions which the column entries should not match.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_not_match_regex_list?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Consistency",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_not_match_regex_list",
+      "display_name": "Expect column values to not match regex list",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "regex_list": ["#SET_VALUE", "#SET_VALUE"]
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0039",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column values to be json parseable.",
+      "input_args": "column: <string> The column name.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_json_parseable?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_json_parseable",
+      "display_name": "Expect column values to be json parseable",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0040",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect column values to match the json schema.",
+      "input_args": "column: <string> The column name.\njson_schema: <string> The JSON schema (in string form) to match.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_match_json_schema?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_match_json_schema",
+      "display_name": "Expect column values to match json schema",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "json_schema": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0041",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the column values to be dateutil parseable.",
+      "input_args": "column: <string> The column name.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_be_dateutil_parseable?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validity",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_be_dateutil_parseable",
+      "display_name": "Expect column values to be dateutil parseable",
+      "kwargs": {
+        "column": "#COLUMN_NAME"
+      },
+      "meta": {}
+    },
+    {
+        "unique_id":"dq-0042",
+        "provider":"GreatExpectation",
+        "type":"DataQuality",
+        "platforms":"Pandas",
+        "description":"Expect the table column count to be equal.",
+        "input_args":"value: <int> The expected number of columns.",
+        "details_url":"https://greatexpectations.io/legacy/v1/expectations/expect_table_column_count_to_equal?filterType=Backend%20support&gotoPage=1&showFilters=true&viewType=Summary",
+        "category":"Table_Level",
+        "tags":"",
+        "dimension":"Completeness",
+        "no_of_instances": -1,
+        "name":"expect_table_column_count_to_equal",
+        "display_name":"Expect table column count to equal",
+        "kwargs":{
+          "value":"#SET_VALUE"
+        },
+        "meta":{
+          
+        }
+    },
+    {
+        "unique_id":"dq-0043",
+        "provider":"GreatExpectation",
+        "type":"DataQuality",
+        "platforms":"Pandas",
+        "description":"Expect the Z-scores of a column's values to be less than a given threshold.",
+        "input_args":"column: <string> The column name of a numerical column.\nthreshold: <int> A maximum Z-score threshold. All column Z-scores that are lower than this threshold will evaluate successfully.\ndouble_sided: <boolean> A True or False value indicating whether to evaluate double sidedly.",
+        "details_url":"https://greatexpectations.io/expectations/expect_column_value_z_scores_to_be_less_than",
+        "category":"Column_Level",
+        "tags":"",
+        "dimension":"Consistency",
+        "no_of_instances": -1,
+        "name":"expect_column_value_z_scores_to_be_less_than",
+        "display_name":"Expect Column Value Z Scores To Be Less Than",
+        "kwargs":{
+          "column":"#SET_VALUE",
+          "threshold":"#SET_VALUE",
+          "double_sided":"#SET_VALUE"
+        },
+        "meta":{
+          
+        }
+    },
+    {
+        "unique_id":"dq-0044",
+        "provider":"GreatExpectation",
+        "type":"DataQuality",
+        "platforms":"Pandas",
+        "description":"Expect column values to match the specified strftime date/time format.",
+        "input_args":"column: <string> The column name.\nstrftime_format: <string> The strftime format to match.",
+        "details_url":"https://greatexpectations.io/legacy/v1/expectations/expect_column_values_to_match_strftime_format/",
+        "category":"Column_Level",
+        "tags":"",
+        "dimension":"Validity",
+        "no_of_instances": -1,
+        "name":"expect_column_values_to_match_strftime_format",
+        "display_name":"Expect column values to match strftime format",
+        "kwargs":{
+          "column": "#COLUMN_NAME",
+          "strftime_format": "#SET_VALUE"
+        },
+        "meta":{
+         
+        }
+    },
+    {
+      "unique_id": "dq-0047",
+      "provider": "GreatExpectation",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect the sum of multiple columns to be equal across rows.",
+      "input_args": "column_list: <list> List of columns to sum.\nsum_total: <integer> Expected row sum.",
+      "details_url": "https://greatexpectations.io/legacy/v1/expectations/expect_multicolumn_sum_to_equal/",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validation",
+      "no_of_instances": -1,
+      "name": "expect_multicolumn_sum_to_equal",
+      "display_name": "Expect multicolumn sum to equal",
+      "kwargs": {
+        "column_list": ["#COLUMN_1", "#COLUMN_2"],
+        "sum_total": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0048",
+      "provider": "Prescience",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "Expect column values to be valid JSON arrays that conform to the provided JSON schema, ensuring the correct structure, required fields, and data types.",
+      "input_args": "",
+      "details_url": "",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "Validation",
+      "no_of_instances": -1,
+      "name": "expect_column_values_to_match_json_array_schema",
+      "display_name": "Expect column values to match JSON array schema",
+      "kwargs": {
+        "column": "#COLUMN_NAME",
+        "schema": "#SET_VALUE"
+      },
+      "meta": {}
+    },
+    {
+      "unique_id": "dq-0049",
+      "provider": "Prescience",
+      "type": "DataQuality",
+      "platforms": "Pandas",
+      "description": "This rule helps in finding data quality issues using user defined code.",
+      "input_args": "value: <textedit> The data quality code has to be entered. Please utilize df as the variable name for both input and output dataframes.",
+      "details_url": "",
+      "category": "Column_Level",
+      "tags": "",
+      "dimension": "",
+      "no_of_instances": -1,
+      "name": "expect_using_user_defined_code",
+      "display_name": "Expect data quality issues using custom Python code",
+      "kwargs": {
+        "value": "#SET_VALUE"
+      },
+      "meta": {}
+    }
+  ]
+}

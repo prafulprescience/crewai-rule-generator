@@ -6,7 +6,7 @@ __copyright__ = "Copyright 2026, Prescience Decision Solutions"
 import os
 
 from crewai import Agent, LLM
-from config_reader import load_yaml
+from helpers.config_reader import load_yaml
 from dotenv import load_dotenv
 from constants import (
     AGENTS_CONFIG_PATH,
@@ -39,8 +39,8 @@ def get_azure_llm() -> LLM:
     )
 
 
-def create_incident_analyst_agent() -> Agent:
-    config = load_agents_config()["incident_analyst"]
+def create_data_quality_analyst_agent() -> Agent:
+    config = load_agents_config()["data_quality_analyst"]
     
     return Agent(
         role=config["role"],
@@ -51,6 +51,17 @@ def create_incident_analyst_agent() -> Agent:
         llm=get_azure_llm(),
     )
 
+def data_profile_analyst_agent() -> Agent:
+    config = load_agents_config()["data_profile_analyst"]
+    
+    return Agent(
+        role=config["role"],
+        goal=config["goal"],
+        backstory=config["backstory"],
+        verbose=False,
+        allow_delegation=False,
+        llm=get_azure_llm(),
+    )
 
 def create_rule_generator_agent() -> Agent:
     config = load_agents_config()["rule_generator"]

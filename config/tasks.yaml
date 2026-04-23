@@ -1,72 +1,114 @@
-analyze_incidents:
+analyze_dataset:
   description: |
-    Load and analyze all incidents from the '<<INCIDENT_TYPE>>' incidents directory.
-    For each incident:
-    1. Extract the incident details (type, title, affected columns, values)
-    2. Identify the specific data quality issue
-    3. Determine which transformation rule category applies
-    4. Document the evidence from the incident JSON
-
-    Dataset Info: <<DS_INFO>>
+    Analyze the provided data profile to identify quality issues and data characteristics.
+    
+    Dataset Profile: <<DS_INFO>>
+    
+    Additional Context: <<ADDITIONAL_INFO>>
 
     Master rules catalog (JSON):
     <<MASTER_RULES>>
 
-    Incidents bundle (all incident_*.json files for this run):
-    <<INCIDENTS_JSON>>
-
-    Analyze only the JSON above; map issues to rule names that exist in the master rules catalog.
+    Analysis Tasks:
+    1. Examine the data profile structure and column definitions
+    2. Identify potential data quality issues based on the profile (null percentages, distributions, etc.)
+    3. Determine which transformation rules could apply
+    4. Prioritize issues by severity and impact
+    
+    Provide data-driven analysis based only on the profile information provided.
   expected_output: |
-    A detailed analysis report for each incident containing:
-    - Incident file name and path
-    - Issue type (null values, duplicates, format issues, etc.)
-    - Affected column(s) and value(s)
-    - Recommended transformation rule from master rules
-    - Evidence excerpts from the incident JSON
+    A comprehensive data quality analysis containing:
+    - Column-level statistics and characteristics
+    - Identified quality issues and risk areas
+    - Affected columns and their properties
+    - Recommended transformation rules from master rules catalog
+    - Confidence levels based on profile evidence
 
 generate_rules:
   description: |
-    Based on the incident analysis, generate transformation rules for each incident.
+    Based on the data profile analysis, generate transformation rules to address identified quality issues.
 
-    The policy block below already embeds the full incidents bundle, master rules catalog, and dataset info from this run.
-    For each incident, apply this transformation policy:
+    The rule generation policy below applies to each identified issue:
     <<RULE_PROMPT_TEMPLATE>>
 
-    IMPORTANT:
-    - Generate AT MOST ONE rule per incident
-    - Do NOT speculate - only use information from the incident
-    - Include realistic confidence scores based on evidence quality
-    - Check each generated rule against the master-rule schema and constraints before finalizing
-    - Track overall confidence consistently across rules
+    Guidelines:
+    - Generate ONE rule per identified issue
+    - Do NOT speculate beyond the profile evidence
+    - Include realistic confidence scores (0.0-1.0)
+    - Validate each rule against the master schema
+    - Each rule must reference the specific data quality issue it addresses
   expected_output: |
-    A JSON array of validated transformation rules, where each rule includes:
-    - name: The transformation rule name from master rules
-    - column or column_list: The affected column(s)
-    - value/old_value/new_value/mapping: The transformation parameters
-    - reason: Evidence-based justification
-    - confidence: Float between 0.0 and 1.0
-    - incident_name: Reference to the source incident
+    A JSON array of validated transformation rules with:
+    - name: Rule name from master rules
+    - column: The affected column(s)
+    - parameters: Transformation parameters (value, mapping, or imputation method)
+    - reason: Why this rule addresses the issue
+    - confidence: Score (0.0-1.0) based on evidence strength
+    - issue_reference: Which data profile issue this addresses
 
 map_to_payload:
   description: |
     Transform each generated rule into the final DQ Suite payload format.
 
-    Current suite payload from the API (baseline for merge / non-destructive updates):
+    BASELINE: Current DQ suite payload from the API:
     <<EXISTING_PAYLOAD>>
 
-    Use this payload mapping template (includes master rules schema and where to take generated rules from):
-    <<PAYLOAD_PROMPT_TEMPLATE>>
+    MASTER RULES SCHEMA (reference for required fields):
+    <<MASTER_RULES>>
 
-    For each rule:
-    1. Find the matching rule in master rules by name
-    2. Copy all schema fields from the master rule
-    3. Populate the kwargs field with the generated rule parameters
+    INSTRUCTIONS:
+    For each generated rule:
+    1. Find the matching rule template in master rules by rule name
+    2. Copy ALL schema fields from the master rule template
+    3. Replace ONLY the 'kwargs' field with actual parameters from generated rule
+    4. Validate each transformed rule against master rule schema (all 15 required keys present)
 
-    Output a single JSON object in your final answer only (no files, no multiple JSON blobs).
-    The application will rebuild the official suite payload from intent rules; your task is analysis only.
+    PAYLOAD ASSEMBLY:
+    1. Preserve ALL metadata fields from EXISTING_PAYLOAD exactly as they are
+    2. Replace ONLY the 'rules' array with the transformed rules (do NOT merge - replace completely)
+    3. Ensure final output is valid JSON matching API schema
+
+    Output format: Complete payload object ready for API submission (same structure as EXISTING_PAYLOAD but with updated rules).
+
   expected_output: |
-    A concise JSON summary with key 'rules_summary' (array of rule names and columns) OR repeat the
-    intent-level rules array if unchanged. Do NOT write to disk.
+    The complete DQ Suite payload object containing all reserved fields:
+    - id: <preserved>
+    - created_at: <preserved> 
+    - created_by: <preserved> 
+    - deleted_at: <preserved> 
+    - description: <preserved>
+    - is_active: <preserved>
+    - modified_by: <preserved>
+    - name: <preserved>
+    - tenant_id: <preserved>
+    - type: <preserved> 
+    - updated_at: <preserved> 
+    - 'rules' array with transformed rules (each rule with all 15 required keys from master schema)
+    - Valid JSON structure matching API response format
+    
+    Example structure:
+    {
+      "id": 30,
+      "created_at": "2026-02-27T04:40:04.112300+00:00",
+      "created_by": "6cfe137e-ad5a-4f1e-9826-c23e9b400bc1",
+      "deleted_at": null,
+      "description": "",
+      "is_active": true,
+      "modified_by": "6cfe137e-ad5a-4f1e-9826-c23e9b400bc1",
+      "name": "DHL Fact Operations Transformation",
+      "tenant_id": "e64c907f-2635-43ab-a91b-c39a4d26ec80",
+      "type": "DataTransformation",
+      "updated_at": "2026-02-27T05:59:06.256972+00:00",
+      "rules": [
+        {
+          "unique_id": "dt-XXXX",
+          "provider": "Prescience",
+          "platforms": "Pandas",
+          ...all 15 fields...
+          "kwargs": {populated with actual values}
+        }
+      ]
+    }
 
 review_output:
   description: |

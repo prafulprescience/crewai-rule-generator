@@ -7,11 +7,12 @@ import os
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from constants import (
+    DATA_QUALITY,
+    DATA_TRANSFORMATION,
     OUTPUT_PAYLOAD_PATH,
     OUTPUT_RULES_PATH,
-    MASTER_RULES_PATH,
+    AI_THRESHOLD_CONFIDENCE,
     save_json,
-    load_json,
 )
 from crew import run_agents
 from rule_selector import (
@@ -32,6 +33,40 @@ from ds_api_wrapper import (
 load_dotenv()
 
 app = Flask(__name__)
+
+
+#function to 
+@app.route('/generate-rules', methods=['POST'])
+def generate_rules():
+    try:
+        print("Entering generate rule.")
+        data = request.json
+        if not data:
+            raise Exception("No input data received.")
+
+        data_profile = data.get('data_profile')
+        additional_info = data.get('additional_info')
+        job_type  =  data.get("type")
+
+        if job_type not in [DATA_TRANSFORMATION, DATA_QUALITY]:
+            raise Exception("Invalid job type. Please specify either 'DataTransformation' or 'DataQuality'.")
+        _,generated_rules = run_agents(job_type, data_profile, additional_info)
+
+        save_json(OUTPUT_RULES_PATH, generated_rules)
+
+        return jsonify({
+            "status": "Success",
+            "message": "Rules generated successfully",
+            "data": generated_rules
+        }), 200
+
+    except Exception as ex:
+        return jsonify({
+            "status": "Error",
+            "message": f"Error : {str(ex)}"
+        }), 500
+
+
 
 
 @app.route('/connector/trigger', methods=['POST'])
@@ -65,20 +100,45 @@ def trigger_workflow():
         save_json(OUTPUT_PAYLOAD_PATH, map_to_payload_task_res['parsed'])
         print("▶ Saving updated payload & selected rules locally...")
 
-        # print("▶ Updating DQ Suite via PUT...")
-        # update_dq_suite(token, suite_id, map_to_payload_task_res['parsed'])
+        print("▶ Updating DQ Suite via PUT...")
+        #update_dq_suite(token, suite_id, map_to_payload_task_res['parsed'])
+
+        # Check confidence and trigger job based on AI_THRESHOLD_CONFIDENCE and auto-trigger flag
+        review_data = review_output_task_res.get('parsed', {})
+        ai_confidence_score = review_data.get('average_confidence', 0)
+        auto_trigger = os.getenv("AUTO_TRIGGER_ON_FULL_SCORE", "false").lower() == "true"
+        
+        if ai_confidence_score >= AI_THRESHOLD_CONFIDENCE:
+            if auto_trigger:
+                print(f"▶ AI confidence score is {ai_confidence_score} & auto-trigger enabled. Triggering job...")
+                #update_job_review_status(token, job_id, ai_confidence_score, True)
+                #trigger_job(token, job_id)
+            else:
+                print(f"▶ AI confidence score is {ai_confidence_score} but auto-trigger disabled. Skipping trigger.")
+                #update_job_review_status(token, job_id, ai_confidence_score, False)
+        else:
+            print("▶ AI confidence score below threshold. Updating job review status...")
+            #update_job_review_status(token, job_id, ai_confidence_score, False)
 
         print("✅ Workflow completed successfully!")
         return jsonify({"status": "Success", "message": ""})
     
     except Exception as ex:
-        raise Exception(f"Error in executing trigger_workflow : {ex}")
+        return jsonify({
+            "status": "Error",
+            "message": f"Error in trigger_workflow: {str(ex)}"
+        }), 500
     
     finally:
         print("Exiting trigger_workflow.")
 
+# Additional endpoints for testing connectivity
+@app.route('/', methods=['GET'])
+def home():
+    return "Welcome to the DataSentinel AI Agent for Rule Generation!"
+
 
 if __name__ == '__main__':
     host = '0.0.0.0'
-    port = 5000
+    port = 5001
     app.run(host=host, port=port, debug=True)
